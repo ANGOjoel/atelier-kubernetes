@@ -2,8 +2,9 @@
 
 > Complétez ce fichier au fil de l'atelier, puis faites un commit et un push (voir la section « Rendu » du README).
 
-**Nom / Prénom :**
-**Groupe :** ING2 APP RS1
+**Nom / Prénom :** ANGO Joël
+**Groupe :** ING2-APP-RS1
+
 
 ---
 
