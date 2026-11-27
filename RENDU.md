@@ -14,27 +14,28 @@
    >
    La commande affiche 3 nœuds :
 
-k3d-lab-server-0 : le Control Plane, qui gère et orchestre le cluster Kubernetes.
+   k3d-lab-server-0 : le Control Plane, qui gère et orchestre le cluster Kubernetes.
+   
+   k3d-lab-agent-0 : le premier Worker, qui exécute les applications.
+   
+   k3d-lab-agent-1 : le deuxième Worker, qui exécute également les applications.
 
-k3d-lab-agent-0 : le premier Worker, qui exécute les applications.
-
-k3d-lab-agent-1 : le deuxième Worker, qui exécute également les applications.
-
-Les trois nœuds sont en état Ready.
+   Les trois nœuds sont en état Ready.
     >
 2. Que montre `docker ps` ? Qu'est-ce qu'un « nœud » dans k3d, concrètement ?
    >
    La commande docker ps affiche 4 conteneurs :
-
-k3d-lab-server-0 : le Control Plane.
-
-k3d-lab-agent-0 : le premier Worker.
-
-k3d-lab-agent-1 : le deuxième Worker.
-
-k3d-lab-serverlb : le Load Balancer.
-
-Dans k3d, un nœud Kubernetes est concrètement un conteneur Docker qui exécute k3s. Le Load Balancer est un conteneur supplémentaire qui permet de rediriger le trafic réseau vers le cluster.
+   
+   k3d-lab-server-0 : le Control Plane.
+   
+   k3d-lab-agent-0 : le premier Worker.
+   
+   k3d-lab-agent-1 : le deuxième Worker.
+   
+   k3d-lab-serverlb : le Load Balancer.
+   Dans k3d, un nœud Kubernetes est concrètement un conteneur Docker qui exécute k3s. 
+   Le Load Balancer est un conteneur supplémentaire qui permet de rediriger le trafic réseau vers le cluster.
+                                                                                                    
    >
 
 ## Exercice 2 — Premier déploiement
@@ -63,9 +64,12 @@ Dans k3d, un nœud Kubernetes est concrètement un conteneur Docker qui exécute
 
 7. Quelle différence entre `kubectl create` et `kubectl apply` ?
    >
+   kubectl create permet de créer une ressource Kubernetes. kubectl apply permet de créer ou de mettre à jour une ressource à partir d'un fichier YAML. Il est donc adapté à la gestion déclarative.
+   >
 8. À quoi sert le `selector` d'un Service ? Que se passe-t-il s'il ne correspond à aucun pod ?
    >
-
+   Le selector permet au Service d'identifier les Pods auxquels il doit envoyer le trafic grâce à leurs labels. S'il ne correspond à aucun Pod, le Service n'a aucune destination et ne peut pas transmettre le trafic.
+   >
 ## Exercice 5 — Scaling & mises à jour
 
 9. Sur quels nœuds se trouvent vos 3 réplicas ? Collez la sortie de `kubectl get pods -l app=site -o wide`.
