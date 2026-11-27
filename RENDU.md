@@ -74,13 +74,21 @@
 
 9. Sur quels nœuds se trouvent vos 3 réplicas ? Collez la sortie de `kubectl get pods -l app=site -o wide`.
    ```
-
+  
    ```
+   >
+   Les trois Pods ont été répartis sur les trois nœuds du cluster : k3d-lab-agent-0, k3d-lab-agent-1 et k3d-lab-server-0.
+   >
 10. Avec l'image `nginx:9.99`, quel statut avait le pod ? Quelle commande vous a donné la cause ?
+    >
+    Kubernetes a effectué une mise à jour progressive (Rolling Update). Il a créé les nouveaux Pods avec l'image nginx:1.28, puis supprimé progressivement les anciens Pods utilisant nginx:1.27. L'historique montre deux révisions.
     >
 11. Pendant la panne, le site restait-il accessible ? Pourquoi ?
     >
-
+     Le nouveau Pod est en état ImagePullBackOff. L'image nginx:9.99 est introuvable sur Docker Hub. L'événement Failed to pull image confirme l'échec du téléchargement.
+     >
+     
+      
 ## Exercice 6 — Portainer & Mario
 
 12. URL publique de votre Mario :
