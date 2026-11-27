@@ -93,8 +93,16 @@
 
 12. URL publique de votre Mario :
     >
+    https://automatic-space-invention-wr5rw9r77r6535jg7-8585.app.github.dev/
+    >
 13. Retrouvez le Deployment `mario` en ligne de commande. Portainer et `kubectl` parlent-ils au même composant ? Lequel ?
     >
+    Non, le Deployment créé depuis Portainer n'est pas fondamentalement différent de ceux créés depuis le terminal. Dans les deux cas, Kubernetes crée un objet Deployment avec ses Pods et son ReplicaSet.
+
+On remarque toutefois que Portainer ajoute des annotations et des labels spécifiques (io.portainer.kubernetes.application...) pour identifier les ressources qu'il gère.
+
+Le fonctionnement Kubernetes reste le même, quel que soit l'outil utilisé pour créer le Deployment.
+>
 
 ## Bonus (facultatif)
 
