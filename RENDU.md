@@ -41,7 +41,11 @@ Dans k3d, un nœud Kubernetes est concrètement un conteneur Docker qui exécute
 
 3. Quels objets Kubernetes ont été créés par `kubectl create deployment` ? (indice : `kubectl get all`)
    >
+   La commande a créé trois ressources principales : un Deployment nommé web, un ReplicaSet chargé de maintenir le nombre de Pods souhaité et un Pod contenant le conteneur Nginx. Le Service a été créé séparément avec la commande kubectl expose.
+   >
 4. Vous avez supprimé le pod `web-...` : que s'est-il passé, et pourquoi ?
+   >
+   Après la suppression du Pod, Kubernetes a automatiquement créé un nouveau Pod avec un nom différent. En effet, le ReplicaSet surveille le nombre de Pods et veille à maintenir le nombre souhaité par le Deployment. Comme un seul Pod était demandé, il en a créé un nouveau pour le remplacer. C'est le mécanisme d'auto-réparation de Kubernetes.
    >
 
 ## Exercice 3 — Modifier un conteneur en direct
